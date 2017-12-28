@@ -29,7 +29,7 @@ exports.up = (knex, Promise) => {
       table.integer('restaurant_id').references('restaurants.id');
       table.integer('meal_id').references('meals.id');
       table.string('address').notNullable();
-      table.float('price', 4, 2).notNullable();
+      table.float('totalPrice', 4, 2).notNullable();
     })
   ]);
 };
