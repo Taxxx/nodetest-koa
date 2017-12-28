@@ -35,7 +35,7 @@ describe('routes : restaurants', () => {
           // the first object in the data array should
           // have the right keys
           res.body.data[0].should.include.keys(
-            'id', 'commercialName', 'rating'
+            'id', 'commercialName', 'legalName', 'commercialEmail', 'adminNumber', 'address', 'logo', 'rating'
           );
           done();
         });
@@ -59,7 +59,7 @@ describe('routes : restaurants', () => {
           // the JSON response body should have a
           // key-value pair of {"data": 1 restaurant object}
           res.body.data[0].should.include.keys(
-            'id', 'commercialName', 'rating'
+            'id', 'commercialName', 'legalName', 'commercialEmail', 'adminNumber', 'address', 'logo', 'rating'
           );
           done();
         });
@@ -92,7 +92,12 @@ describe('routes : restaurants', () => {
         .post('/api/v1/restaurants')
         .send({
           commercialName: 'Casa de Campo',
-          rating: 8
+          legalName: 'Casa de Campo',
+          commercialEmail: 'casadecampo@gmail.com',
+          adminNumber: '2233432',
+          address: 'test address casa de campo',
+          logo: 'casacampo.jpg',
+          rating: 4.9
         })
         .end((err, res) => {
           // there should be no errors
@@ -108,7 +113,7 @@ describe('routes : restaurants', () => {
           // the JSON response body should have a
           // key-value pair of {"data": 1 restaurant object}
           res.body.data[0].should.include.keys(
-            'id', 'commercialName', 'rating'
+            'id', 'commercialName', 'legalName', 'commercialEmail', 'adminNumber', 'address', 'logo', 'rating'
           );
           done();
         });
@@ -161,7 +166,7 @@ describe('routes : restaurants', () => {
               // the JSON response body should have a
               // key-value pair of {"data": 1 restaurant object}
               res.body.data[0].should.include.keys(
-                'id', 'commercialName', 'rating'
+                'id', 'commercialName', 'legalName', 'commercialEmail', 'adminNumber', 'address', 'logo', 'rating'
               );
               // ensure the restaurant was in fact updated
               const newRestaurantObject = res.body.data[0];
@@ -217,7 +222,7 @@ describe('routes : restaurants', () => {
               // the JSON response body should have a
               // key-value pair of {"data": 1 restaurant object}
               res.body.data[0].should.include.keys(
-                'id', 'commercialName', 'rating'
+                'id', 'commercialName', 'legalName', 'commercialEmail', 'adminNumber', 'address', 'logo', 'rating'
               );
               // ensure the restaurant was in fact deleted
               knex('restaurants').select('*')

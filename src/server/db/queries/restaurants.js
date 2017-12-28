@@ -11,6 +11,12 @@ function getSingleRestaurant(id) {
     .where({ id: parseInt(id) });
 }
 
+function avgRestaurantRating(id) {
+  return knex('reviews')
+    .avg('rating')
+    .where({ restaurant_id: parseInt(id) });
+}
+
 function addRestaurant(restaurant) {
   return knex('restaurants')
     .insert(restaurant)
@@ -22,6 +28,14 @@ function updateRestaurant(id, restaurant) {
     .update(restaurant)
     .where({ id: parseInt(id) })
     .returning('*');
+}
+
+function updateRestaurantRating(id, rating) {
+  return knex('restaurants')
+    .where('id', '=', id)
+    .update({
+      rating: rating
+    })
 }
 
 function deleteRestaurant(id) {
@@ -36,5 +50,7 @@ module.exports = {
   deleteRestaurant,
   getAllRestaurants,
   getSingleRestaurant,
-  updateRestaurant
+  updateRestaurant,
+  avgRestaurantRating,
+  updateRestaurantRating
 };
