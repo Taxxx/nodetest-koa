@@ -7,6 +7,7 @@
 * `CREATE DATABASE nodetest_api_test`;
 * `CREATE DATABASE nodetest_api`;
 ## RUN DB MIGRATION
+* Install knex -> `npm install knex -g`
 * `knex migrate:latest --env development`
 ## SEED DATABASE
 * `knex seed:run --env development`
